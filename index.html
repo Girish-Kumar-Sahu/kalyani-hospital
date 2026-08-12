@@ -42,9 +42,6 @@
       font-weight: 700;
       color: #0284c7;
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     .nav-links {
@@ -64,10 +61,29 @@
       color: #0284c7;
     }
 
+    /* Responsive Frame-Locked Decorative Image Banner Container */
+    .decor-banner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 280px;
+      overflow: hidden;
+      border-radius: 12px;
+      background-color: #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .decor-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     /* Hero Section */
     .hero {
       background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-      padding: 4rem 1.5rem;
+      padding: 3rem 1.5rem;
       text-align: center;
     }
 
@@ -79,7 +95,7 @@
     .hero h1 {
       font-size: 2.25rem;
       color: #0f172a;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .hero p {
@@ -111,95 +127,57 @@
     }
 
     .section-title {
-      text-align: center;
       font-size: 1.75rem;
       color: #0f172a;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid #0284c7;
+      display: inline-block;
+      padding-bottom: 0.25rem;
     }
 
-    /* Gallery / Image Section */
-    /* Dynamic frame locking to keep photos inside bounded cards */
-    .gallery-grid {
+    /* Details Grid */
+    .details-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
       margin-bottom: 3rem;
     }
 
-    .card {
-      background: #ffffff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .image-container {
-      width: 100%;
-      aspect-ratio: 16 / 9; /* Maintains consistent visual height */
-      overflow: hidden;
-      background-color: #e2e8f0;
-    }
-
-    /* Essential Rules for Keeping Images in Frame */
-    .image-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Prevents stretching and clipping */
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover img {
-      transform: scale(1.03);
-    }
-
-    .card-body {
-      padding: 1.25rem;
-      flex-grow: 1;
-    }
-
-    .card-body h3 {
-      font-size: 1.2rem;
-      color: #0f172a;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-body p {
-      font-size: 0.95rem;
-      color: #64748b;
-    }
-
-    /* Services Grid */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .service-item {
+    .info-card {
       background: #ffffff;
       padding: 1.5rem;
       border-radius: 8px;
-      border-left: 4px solid #0284c7;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border-top: 4px solid #0284c7;
     }
 
-    .service-item h4 {
-      font-size: 1.1rem;
+    .info-card h3 {
+      font-size: 1.2rem;
       color: #0f172a;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
-    .service-item p {
-      font-size: 0.9rem;
-      color: #64748b;
+    .info-card p, .info-card ul {
+      font-size: 0.95rem;
+      color: #475569;
     }
 
-    /* Info & Contact Section */
-    .info-section {
+    .info-card ul {
+      list-style-position: inside;
+      margin-top: 0.5rem;
+    }
+
+    .info-card li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Full Width Section Spacing */
+    .section-block {
+      margin-bottom: 3.5rem;
+    }
+
+    /* Contact Block */
+    .contact-box {
       background: #ffffff;
       border-radius: 12px;
       padding: 2rem;
@@ -207,21 +185,18 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
+      margin-bottom: 3rem;
     }
 
-    .info-box h3 {
+    .contact-box h3 {
       font-size: 1.25rem;
       color: #0f172a;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
-    .info-box p {
+    .contact-box p {
       margin-bottom: 0.5rem;
       color: #475569;
-    }
-
-    .info-box strong {
-      color: #0f172a;
     }
 
     /* Footer */
@@ -230,12 +205,14 @@
       color: #94a3b8;
       text-align: center;
       padding: 1.5rem;
-      margin-top: 3rem;
       font-size: 0.9rem;
     }
 
-    /* Responsive adjustments for mobile screens */
-    @media (max-width: 600px) {
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .decor-banner {
+        height: 180px;
+      }
       .nav-container {
         flex-direction: column;
         gap: 1rem;
@@ -251,98 +228,118 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header Section -->
   <header>
     <div class="nav-container">
       <a href="#" class="logo">🏥 Kalyani Hospital</a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#facilities">Facilities</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#facilities">Facilities</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </header>
 
+  <!-- 1. Header Decorative Photo -->
+  <div style="padding: 1.5rem 1.5rem 0 1.5rem;">
+    <div class="decor-banner">
+      <img src="1.png" alt="" />
+    </div>
+  </div>
+
   <!-- Hero Section -->
   <section class="hero" id="about">
     <div class="hero-content">
       <h1>Kalyani Hospital & Maternity Home</h1>
-      <p>Providing compassionate, high-quality, and modern healthcare services to the patients of Bilaspur and neighboring regions.</p>
+      <p>Providing trusted, patient-centric medical treatment and healthcare services in Masanganj, Bilaspur.</p>
       <a href="tel:+917752410316" class="btn">Call for Enquiries</a>
     </div>
   </section>
 
-  <!-- Main Content -->
+  <!-- Main Information Container -->
   <main class="container">
 
-    <!-- Facility & Infrastructure Photos -->
-    <h2 class="section-title" id="facilities">Hospital Highlights</h2>
-    <div class="gallery-grid">
-      <div class="card">
-        <div class="image-container">
-          <img src="1.png" alt="Kalyani Hospital Entrance / Exterior" />
+    <!-- Section 1: Detailed Overview & Specialties -->
+    <div class="section-block" id="services">
+      <h2 class="section-title">Medical Services & Care</h2>
+      <div class="details-grid">
+        <div class="info-card">
+          <h3>Maternity & Obstetrics</h3>
+          <p>Complete maternal care including prenatal checkups, high-risk pregnancy monitoring, post-delivery care, and neonatal support.</p>
         </div>
-        <div class="card-body">
-          <h3>Hospital Premise</h3>
-          <p>Easily accessible infrastructure designed with dedicated patient care facilities.</p>
+        <div class="info-card">
+          <h3>Gynecology</h3>
+          <p>Comprehensive women’s health management, routine screenings, reproductive health treatments, and specialized care.</p>
         </div>
-      </div>
-
-      <div class="card">
-        <div class="image-container">
-          <img src="2.png" alt="Maternity & Clinical Care" />
+        <div class="info-card">
+          <h3>General Medicine</h3>
+          <p>Diagnosis, consultation, and long-term care for acute illnesses, lifestyle disorders, infections, and preventative health assessments.</p>
         </div>
-        <div class="card-body">
-          <h3>Maternity & Women's Care</h3>
-          <p>Specialized gynecology and maternity services ensuring safety and comfort.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="image-container">
-          <img src="3.png" alt="Diagnostic & Patient Care" />
-        </div>
-        <div class="card-body">
-          <h3>Advanced Medical Care</h3>
-          <p>Equipped for outpatient consultation, emergency response, and essential diagnostics.</p>
+        <div class="info-card">
+          <h3>Orthopedics</h3>
+          <p>Focused consultations for bone health, joint disorders, fracture recovery, and general musculoskeletal conditions.</p>
         </div>
       </div>
     </div>
 
-    <!-- Medical Services -->
-    <h2 class="section-title" id="services">Key Specializations & Facilities</h2>
-    <div class="services-grid">
-      <div class="service-item">
-        <h4>Gynecology & Obstetrics</h4>
-        <p>Comprehensive maternal healthcare, prenatal & postnatal care, and safe deliveries.</p>
-      </div>
-      <div class="service-item">
-        <h4>General Medicine</h4>
-        <p>Diagnosis and management of acute and chronic health conditions by experienced doctors.</p>
-      </div>
-      <div class="service-item">
-        <h4>Orthopedics</h4>
-        <p>Expert evaluation and treatment for bone, joint, and trauma-related injuries.</p>
-      </div>
-      <div class="service-item">
-        <h4>Accessibility & Care</h4>
-        <p>Wheelchair accessible entrance, dedicated parking area, and emergency patient transport.</p>
+    <!-- 2. Middle Decorative Photo -->
+    <div class="section-block">
+      <div class="decor-banner">
+        <img src="2.png" alt="" />
       </div>
     </div>
 
-    <!-- Contact & Location Info -->
-    <div class="info-section" id="contact">
-      <div class="info-box">
-        <h3>📍 Hospital Location</h3>
-        <p><strong>Address:</strong> Magarpara Road, Opp. Advit Furniture House, Near LIC Office, Masanganj, Bilaspur, Chhattisgarh - 495001</p>
-        <p><strong>Landmark:</strong> Near LIC Office / Opposite Advit Furniture</p>
+    <!-- Section 2: Hospital Facilities -->
+    <div class="section-block" id="facilities">
+      <h2 class="section-title">Hospital Infrastructure & Features</h2>
+      <div class="details-grid">
+        <div class="info-card">
+          <h3>Patient Accessibility</h3>
+          <ul>
+            <li>Wheelchair accessible entrance and exit</li>
+            <li>Easy-access ramps for ambulatory patients</li>
+            <li>Dedicated parking space available nearby</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Inpatient & Outpatient Care</h3>
+          <ul>
+            <li>Dedicated Outpatient Department (OPD)</li>
+            <li>Comfortable patient care rooms</li>
+            <li>On-site pharmacy support</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Emergency & Support</h3>
+          <ul>
+            <li>24/7 Emergency response support</li>
+            <li>Prompt triage and patient assistance</li>
+            <li>Trained nursing and medical staff</li>
+          </ul>
+        </div>
       </div>
-      <div class="info-box">
-        <h3>⏰ Working Hours & Contact</h3>
-        <p><strong>Emergency:</strong> Available 24 Hours</p>
-        <p><strong>OPD Timings:</strong> Mon - Sat: 10:00 AM – 2:00 PM / 10:00 AM – 10:00 PM</p>
-        <p><strong>Phone:</strong> +91 7752 410316</p>
+    </div>
+
+    <!-- Section 3: Contact & Timings Information -->
+    <div class="contact-box" id="contact">
+      <div>
+        <h3>📍 Location & Address</h3>
+        <p><strong>Address:</strong> Magarpara Road, Masanganj, Bilaspur, Chhattisgarh 495001</p>
+        <p><strong>Landmark:</strong> Opposite Advit Furniture House, Near LIC Office</p>
+      </div>
+      <div>
+        <h3>⏰ Operational Hours</h3>
+        <p><strong>Emergency Care:</strong> Open 24/7</p>
+        <p><strong>OPD Consultation:</strong> Monday to Saturday (10:00 AM – 2:00 PM & 5:00 PM – 8:30 PM)</p>
+        <p><strong>Contact Phone:</strong> +91 7752 410316</p>
+      </div>
+    </div>
+
+    <!-- 3. Footer Area Decorative Photo -->
+    <div class="section-block" style="margin-bottom: 0;">
+      <div class="decor-banner">
+        <img src="3.png" alt="" />
       </div>
     </div>
 
